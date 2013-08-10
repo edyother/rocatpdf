@@ -4,7 +4,7 @@
 
 # Requires imagemagick and pdfunite
 
-# ./rocatpdf newfilename.pdf
+# ./rocatpdf.sh newfilename.pdf
 
 mkdir -p rotated
 
