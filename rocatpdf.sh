@@ -2,20 +2,12 @@
 
 # Rotates a directory of pdf files 90 degrees counterclockwise and merges them into one pdf file
 
-# Requires imagemagick and pdfunite
+# Requires pdftk
 
 # ./rocatpdf.sh newfilename.pdf
 
-mkdir -p rotated
+pdftk *.pdf cat output tmp.pdf
 
-for i in $( ls *.pdf ); do 
-	convert -rotate 270 $i ./rotated/$i
-done
+pdftk tmp.pdf cat 1-endW output $1
 
-cd rotated
-
-pdfunite $( ls ) ../$1
-
-cd ../
-
-rm -r rotated
+rm tmp.pdf
